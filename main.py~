@@ -1,6 +1,6 @@
 from GetDetls import GetDetls
 from txtFormat import txtFormat
-from pdfFormat import pdfFormat
+#from pdfFormat import pdfFormat
 from foobarFormat import foobarFormat
 
 

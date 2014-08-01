@@ -1,15 +1,15 @@
-class reg:
+class GetDetls:
        	def getVal(self,registerID):
-		self.ri=registerID
+		self.regID=registerID
 		print "Code Name: "
-		self.cn=raw_input()
+		self.codName=raw_input()
 		print "Blood Colour: "
-		self.bc=raw_input()
+		self.bloodColour=raw_input()
 		print "No.of Antinas: "
-		self.na=input()
+		self.numAntinas=input()
 		print "No.of Legs: "
-		self.nl=input()
+		self.numLegs=input()
 		print "Home planet: "
-		self.hp=raw_input()
+		self.homePlanet=raw_input()
 		print "How long Will You Stay here: "
-		self.hl=raw_input()
+		self.howLong=raw_input()
