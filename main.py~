@@ -1,9 +1,5 @@
 from GetDetls import GetDetls
-from txtFormat import txtFormat
-#from pdfFormat import pdfFormat
-from foobarFormat import foobarFormat
-
-
+import os
 
 class AlienFriend:
 	registerID=None
@@ -17,15 +13,27 @@ class AlienFriend:
 				print "\n"
 				doReg = GetDetls()
 				doReg.getVal(self.registerID)
-				print "Enter export format"
+				print "List of File Format Available "
+				fileTypeCount = 1
+				files = [f for f in os.listdir('.') if os.path.isfile(f)]
+				for currentFile in files:
+					if "Format" in currentFile and "pyc" not in currentFile:
+						print str(fileTypeCount)+"." +currentFile[:-9]
+						fileTypeCount = fileTypeCount+1
+
 				print "Convert To : "
 				fileType = raw_input() 
 				try:
-					doWrt =  eval(fileType+"Format()")
+					exec("from "+fileType+"Format import "+fileType+"Format") 
+					doWrite = eval(fileType+"Format()")
+
 				except:
-					print("Error, file is being processed in PDF format")
-					doWrt =  eval("pdfFormat()")
-				doWrt.saveToFile(doReg)
+					print("Error, file is being processed in PDF format") 
+					fileType = "pdf" 
+					exec("from "+fileType+"Format import "+fileType+"Format") 
+					doWrite = eval("pdfFormat()")
+
+				doWrite.saveToFile(doReg)
 				print "\nRegistration Successful"
 				print "Your Reg.No is: "+str(self.registerID)+"\n\n"
 				self.registerID=self.registerID+1
