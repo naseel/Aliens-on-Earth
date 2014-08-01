@@ -13,15 +13,13 @@ class AlienFriend:
 				print "\n"
 				doReg = GetDetls()
 				doReg.getVal(self.registerID)
-				print "List of File Format Available "
-				fileTypeCount = 1
+				print "List of File Format Available\n....................... "
 				files = [f for f in os.listdir('.') if os.path.isfile(f)]
 				for currentFile in files:
 					if "Format" in currentFile and "pyc" not in currentFile:
-						print str(fileTypeCount)+"." +currentFile[:-9]
-						fileTypeCount = fileTypeCount+1
+						print currentFile[:-9]
 
-				print "Convert To : "
+				print "\nConvert To : "
 				fileType = raw_input() 
 				try:
 					exec("from "+fileType+"Format import "+fileType+"Format") 
